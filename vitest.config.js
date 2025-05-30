@@ -10,7 +10,7 @@ export default defineConfig({
     server: {
         open: true,
         host: 'localhost',
-        port: 3000
+        port: 3000,
     },
     test: {
         environment: 'jsdom',
@@ -18,10 +18,10 @@ export default defineConfig({
     // Globally exclude test files from optimization & transforms
     optimizeDeps: {
         // Prevent test-related files from being pre-bundled
-        exclude: ['**/tests/**']
+        exclude: ['**/tests/**'],
     },
     esbuild: {
         // Fully exclude test files and the tests/ directory
-        exclude: /(^|\/)tests\/.*|.*\.(test|spec)\.js$/
+        exclude: /(^|\/)tests\/.*|.*\.(test|spec)\.js$/,
     },
 });
