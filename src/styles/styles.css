@@ -7,84 +7,7 @@
 
 body {
     min-width: 360px;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-
-/* Row */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 8px 0;
-}
-
-/* Columns */
-.col {
-    padding: 8px;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-
-/*flex-grow: 0; Don’t grow this column to fill available space.*/
-/*flex-shrink: 0; Don’t shrink this column if there’s not enough space.*/
-/*flex-basis: 8.33%; The column's base width is 8.33% of its container. */
-
-
-/* 12-Column Grid */
-.col-1 {
-    flex: 0 0 8.33%;
-    max-width: 8.33%;
-}
-.col-2 {
-    flex: 0 0 16.66%;
-    max-width: 16.66%;
-}
-.col-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
-}
-.col-4 {
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-}
-.col-5 {
-    flex: 0 0 41.66%;
-    max-width: 41.66%;
-}
-.col-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-.col-7 {
-    flex: 0 0 58.33%;
-    max-width: 58.33%;
-}
-.col-8 {
-    flex: 0 0 66.66%;
-    max-width: 66.66%;
-}
-.col-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
-}
-.col-10 {
-    flex: 0 0 83.33%;
-    max-width: 83.33%;
-}
-.col-11 {
-    flex: 0 0 91.66%;
-    max-width: 91.66%;
-}
-.col-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 table {
@@ -94,18 +17,44 @@ table {
 
 th, td {
     border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
+    padding: 5px;
+    text-align: center;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    padding: 15px;
+}
+.text-heading {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
 
-/* Responsive (stack columns on small screens) */
-@media (max-width: 768px) {
-    .col {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-    .hide-on-mobile {
-        display: none;
-    }
+.text-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text);
+}
+
+.text-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.text-sub {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-secondary);
+}
+
+.main-section {
+    text-align: center;
 }

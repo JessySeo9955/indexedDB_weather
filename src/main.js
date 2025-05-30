@@ -1,5 +1,7 @@
 import api from './api';
+import './styles/theme.css';
 import './styles/styles.css';
+import './styles/responsive.css';
 
 // register service worker
 if ('serviceWorker' in navigator) {

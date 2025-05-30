@@ -6,40 +6,54 @@
     <title>12-Column Grid System</title>
 </head>
 <body>
-<header>Weather Compare</header>
-<div class="container">
-    <div class="row">
+<header class="bg-primary text-heading color-white">
+    <span>
+        Weather Compare
+    </span>
+</header>
+<div class="container text-body">
+    <div class="row main-section">
         <div class="col-6">
-            <span>Title</span>
+            <span class="text-title">OTTAWA</span>
+
             <div class="row">
-                <div class="col col-6">
+                <div class="col child">
                     <div>14:00:00</div>
-                    <div>Mon 05/22</div>
+                    <div><span class="text-sub">Mon 05/22</span></div>
                 </div>
-                <div class="col col-6">
-                    <div>16</div>
-                    <div>Feels Like</div>
-                    <div>Humidity</div>
+                <div class="col child">
+                    <div>16&deg;</div>
+                    <div><span class="text-sub">Feels Like: 18°C</span></div>
+                    <div><span class="text-sub">Humidity: 78%</span></div>
+                </div>
+                <div class="child hide-on-mobile">
+                    <div>3.1m/s SW</div>
+                    <div><span class="text-sub">Overcast clouds</span></div>
+                    <div><span class="text-sub">Light breeze</span></div>
                 </div>
             </div>
         </div>
         <div class="col-6">
-            <span>Title</span>
+            <span class="text-title">SOUTH KOREA</span>
             <div class="row">
-                <div class="col col-6">
+                <div class="col child">
                     <div>14:00:00</div>
-                    <div>Mon 05/22</div>
+                    <div><span class="text-sub">Mon 05/22</span></div>
                 </div>
-                <div class="col col-6">
-                    <div>16</div>
-                    <div>Feels Like</div>
-                    <div>Humidity</div>
+                <div class="col child">
+                    <div>16&deg;</div>
+                    <div><span class="text-sub">Feels Like: 18°C</span></div>
+                    <div><span class="text-sub">Humidity: 78%</span></div>
+                </div>
+                <div class="child hide-on-mobile">
+                    <div>3.1m/s SW</div>
+                    <div><span class="text-sub">Overcast clouds</span></div>
+                    <div><span class="text-sub">Light breeze</span></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row">
+    <div class="row main-section">
         <div class="col col-6">
             <table>
                 <thead>
@@ -81,15 +95,6 @@
             </table>
         </div>
     </div>
-    <!--            <div class="row">-->
-    <!--                <div class="col col-4">Col 4</div>-->
-    <!--                <div class="col col-4">Col 4</div>-->
-    <!--                <div class="col col-4">Col 4</div>-->
-    <!--            </div>-->
-
-    <!--            <div class="row">-->
-    <!--                <div class="col col-12">Col 12</div>-->
-    <!--            </div>-->
 </div>
 <script type="module" src="./src/main.js"></script>
 </body>
