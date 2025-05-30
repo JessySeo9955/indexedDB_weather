@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Service Worker App</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>12-Column Grid System</title>
 </head>
 <body>
-<h1>Hello Service Worker</h1>
-<script type="module" src="./js/main.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col col-6">Col 6</div>
+        <div class="col col-6">Col 6</div>
+    </div>
+
+    <div class="row">
+        <div class="col col-4">Col 4</div>
+        <div class="col col-4">Col 4</div>
+        <div class="col col-4">Col 4</div>
+    </div>
+
+    <div class="row">
+        <div class="col col-12">Col 12</div>
+    </div>
+</div>
+<script type="module" src="./src/main.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 import api from './api';
+import './styles/styles.css';
 
-<!-- register service worker -->
+ // register service worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
