@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-function initAxios(latitude, longitude) {
+function initAxios(lat, lon) {
     const api = axios.create({
         baseURL: 'https://itcurv9da5.execute-api.us-east-2.amazonaws.com',
-        timeout: 5000,
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        timeout: 5000
     });
 
     api.interceptors.request.use(config => {
-        // default params
-        config.params = { latitude, longitude, ...config.params };
+        // default params, headers
+        config.params = { lat, lon, ...config.params };
+        config.headers = {
+            'x-api-key': 'mcmB2BJuGu4FpNcbpborD5QUxP3R10g73UjZfjX5',
+            'Content-Type': 'application/json',
+            ...config.headers
+        }
         return config;
     });
 
@@ -22,16 +24,12 @@ function initAxios(latitude, longitude) {
     });
 
     async function hourlyWeather() {
-        return await api.post('/', { api: 'https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=45.424721&lon=-75.695000' }, {
-            headers: {
-                'x-api-key': 'mcmB2BJuGu4FpNcbpborD5QUxP3R10g73UjZfjX5',
-            },
-        });
+        return await api.post('/', { api: 'https://pro.openweathermap.org/data/2.5/forecast/hourly' });
     }
 
 
     async function summaryWeather() {
-        return await api.get('https://api.openweathermap.org/data/2.5/weather');
+        return await api.post('/', { api: 'https://api.openweathermap.org/data/2.5/weather' });
     }
 
     return { hourlyWeather, summaryWeather };

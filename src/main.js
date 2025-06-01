@@ -6,11 +6,10 @@ import './styles/responsive.css';
 // initialization
 import initGeolocation from './geolocation';
 import initAxios from './api'
-import initServiceWorker from './init_sw';
+import initServiceWorker from './service_worker';
 
 // components
-import CountrySummary from './components/country-summary';
-import DailyWeather from './components/daily-weather';
+import './components';
 
 const {coords: {latitude, longitude}} = await initGeolocation();
 const api = initAxios(latitude, longitude);
@@ -27,5 +26,3 @@ const api = initAxios(latitude, longitude);
 //  [hourly, summary] = await Promise.all([hourlyWeather(), summaryWeather()]);
 // console.log(hourly, summary)
 
-customElements.define('country-summary', CountrySummary);
-customElements.define('daily-weather', DailyWeather);
