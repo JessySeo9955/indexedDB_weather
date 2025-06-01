@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     root: '.', // Root directory (where your index.html is)
+    isCustomElement: true,
     publicDir: 'public',
     build: {
         outDir: 'dist',
