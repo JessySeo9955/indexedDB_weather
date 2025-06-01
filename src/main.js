@@ -11,8 +11,11 @@ import initServiceWorker from './service_worker';
 // components
 import './components';
 
-const {coords: {latitude, longitude}} = await initGeolocation();
-const api = initAxios(latitude, longitude);
+(async () => {
+    const { coords: { latitude, longitude } } = await initGeolocation();
+    const api = initAxios(latitude, longitude);
+})();
+
 
 // const App = defineComponent({
 //     components: { CountrySummary },
