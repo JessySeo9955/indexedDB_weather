@@ -25,6 +25,7 @@
 .color-cold         { color: var(--color-cold); }
 .color-error        { color: var(--color-error); }
 .color-success      { color: var(--color-success); }
+.color-border      { color: var(--color-border); }
 .color-white      { color: white }
 
 /* Background color utilities */

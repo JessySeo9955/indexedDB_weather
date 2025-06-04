@@ -1,0 +1,35 @@
+// https://nominatim.openstreetmap.org/reverse?lat=45.3487&lon=-75.7277&format=json
+{
+  "place_id": 339510622,
+  "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+  "osm_type": "way",
+  "osm_id": 473209530,
+  "lat": "45.3487630",
+  "lon": "-75.7276755",
+  "class": "building",
+  "type": "house",
+  "place_rank": 30,
+  "importance": 0.00008719386587315202,
+  "addresstype": "building",
+  "name": "",
+  "display_name": "11, Overlake Drive, Borden Farm, Knoxdale-Merivale, Nepean, Ottawa, Eastern Ontario, Ontario, K2G 0B1, Canada",
+  "address": {
+    "house_number": "11",
+    "road": "Overlake Drive",
+    "neighbourhood": "Borden Farm",
+    "suburb": "Nepean",
+    "city": "Ottawa",
+    "state_district": "Eastern Ontario",
+    "state": "Ontario",
+    "ISO3166-2-lvl4": "CA-ON",
+    "postcode": "K2G 0B1",
+    "country": "Canada",
+    "country_code": "ca"
+  },
+  "boundingbox": [
+    "45.3486900",
+    "45.3488360",
+    "-75.7277770",
+    "-75.7275740"
+  ]
+}
