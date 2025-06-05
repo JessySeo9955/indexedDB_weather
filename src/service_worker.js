@@ -1,6 +1,6 @@
 function initServiceWorker() {
     if ('serviceWorker' in navigator) {
-        // window.addEventListener('load', activateWorker, { once: true });
+        window.addEventListener('load', activateWorker, { once: true });
     }
 }
 

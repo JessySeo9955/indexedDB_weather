@@ -1,6 +1,4 @@
 import axios from 'axios';
-import WeatherData from './data/WeatherData';
-
 
 function createAxios(baseUrl) {
     const api = axios.create({
@@ -23,19 +21,14 @@ function createAxios(baseUrl) {
 function initAddressAxios(lat, lon) {
     const api = createAxios('https://nominatim.openstreetmap.org');
 
-    api.interceptors.request.use(config => {
-        config.params = { lat, lon, ...config.params };
-        return config;
-    });
-
     api.interceptors.response.use(config => {
         return config.data;
     }, (err) => {
         return Promise.reject(err);
     });
 
-    async function locationInfo() {
-        return api.get('/reverse', { params: {format: 'json'}});
+    function locationInfo(latitude = lat, longitude = lon) {
+        return api.get('/reverse', { params: {format: 'json', lat: latitude, lon: longitude}});
     }
 
     return { locationInfo };
@@ -52,18 +45,18 @@ function initWeatherAxios(lat, lon) {
     });
 
     api.interceptors.response.use(config => {
-        return config.data.data;
+        return JSON.parse(config.data.data);
     }, (err) => {
         return Promise.reject(err);
     });
 
-    async function hourlyWeather() {
-        return api.post('/', { api: `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}`, type: 'hours' });
+    function hourlyWeather(latitude = lat, longitude = lon) {
+        return api.post('/', { api: `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longitude}`, type: 'hours' });
     }
 
 
-    async function summaryWeather() {
-        return api.post('/', { api: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}` , type: 'summary'});
+     function summaryWeather(latitude = lat, longitude = lon) {
+        return api.post('/', { api: `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}` , type: 'summary'});
     }
 
     return { hourlyWeather, summaryWeather };
