@@ -18,7 +18,7 @@ class CountrySummary extends HTMLElement {
 
     render() {
         this.innerHTML = `
-             <span class="text-title">${this._address.country}</span>
+             <span class="text-title">${this._address.city}</span>
              <div class="row">
                  <div class="col child">
                      <div>${this._weather.temperature.dt}</div>

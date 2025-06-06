@@ -10,41 +10,33 @@ import initServiceWorker from './service_worker';
 
 // components
 import './components';
-import WeatherData from './data/WeatherData';
 
 (async () => {
 
+    // init service worker
     initServiceWorker();
-    // user location
-    // fail -> ottawa
-    const { coords: { latitude, longitude } } = await initGeolocation();
-    const weatherAPI = initWeatherAxios(latitude, longitude);
+
+    // coords
+    const { coords: { latitude, longitude } } = await initGeolocation(); // fail -> ottawa
+    const seoul = { latitude: roundCoords(37.532600), longitude: roundCoords(127.024612) };
+    const local = { latitude: roundCoords(latitude), longitude: roundCoords(longitude) };
+
+    // init AXIOS
+    const weatherAPI = initWeatherAxios(local.latitude, local.longitude);
     const addressAPI = initAddressAxios(latitude, longitude);
 
-    // await weatherAPI.hourlyWeather();
+    // bind data to Dom
+    await bindSummaryToDom('#local-location', ...Object.values(local));
+    await bindSummaryToDom('#seoul-location', ...Object.values(seoul));
 
-    const userLocationSummary$ = window.document.querySelector('#user-location');
-    const data = await weatherAPI.summaryWeather();
-
-    userLocationSummary$.place = await addressAPI.locationInfo();
-    userLocationSummary$.weather = new WeatherData(data);
-
-
-    // seoul location
-    // South Korea is 37.532600, and the longitude is 127.024612
-
+    async function bindSummaryToDom(id, lat, long) {
+        const summary$ = window.document.querySelector(id);
+        [summary$.place, summary$.weather] = await Promise.all([addressAPI.locationInfo(lat, long), weatherAPI.summaryWeather(lat, long)]);
+    }
 })();
 
-
-// const App = defineComponent({
-//     components: { CountrySummary },
-//     template: `<country-summary />`
-// })
-// createApp(App).mount('#app');
-
-// register service worker
-// initServiceWorker();
-// await api.hourlyWeather();
-//  [hourly, summary] = await Promise.all([hourlyWeather(), summaryWeather()]);
-// console.log(hourly, summary)
+function roundCoords(number, decimals = 3) {
+    const factor = Math.pow(10, decimals);
+    return Math.round(number * factor) / factor;
+}
 
