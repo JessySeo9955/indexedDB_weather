@@ -4,9 +4,9 @@ import './styles/styles.css';
 import './styles/responsive.css';
 
 // initialization
-import initGeolocation from './geolocation';
-import { initAddressAxios, initWeatherAxios } from './api';
-import initServiceWorker from './service_worker';
+import initGeolocation from './utils/geolocation';
+import { initAddressAxios, initWeatherAxios } from './utils/api';
+import initServiceWorker from './utils/service_worker';
 
 // components
 import './components';
@@ -28,6 +28,7 @@ import './components';
     // bind data to Dom
     await bindSummaryToDom('#local-location', ...Object.values(local));
     await bindSummaryToDom('#seoul-location', ...Object.values(seoul));
+
 
     async function bindSummaryToDom(id, lat, long) {
         const summary$ = window.document.querySelector(id);
