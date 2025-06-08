@@ -1,0 +1,31 @@
+# 🌤️ Weather Compare
+
+A simple web app to compare **local weather** with **Seoul** weather data in real time.
+
+## 📡 Data Source
+
+- [OpenWeather](https://openweathermap.org/)
+
+## 🧰 Tech Stack
+
+### 🚀 Frontend
+
+- **Web Components** – for building reusable, modular UI components
+- **IndexedDB** – for local data caching 
+- **Service Worker** – for background sync
+
+### ☁️ Backend (Serverless)
+
+- **Java** – for Lambda function logic
+- **AWS API Gateway** – for secure and scalable API endpoints 
+- **AWS Lambda** – for serverless backend logic
+
+### ⚙️ CI/CD & Hosting
+
+- **GitHub Actions** – for automated build and deployment workflows
+- **Firebase Hosting** – for fast, reliable, and global static site hosting
+
+---
+
+## 📸 Screenshots (Optional)
+<img align="right" max-width="100%" src="https://raw.githubusercontent.com/JessySeo9955/indexedDB_weather/main/.github/images/screenshot_weather.png" />
