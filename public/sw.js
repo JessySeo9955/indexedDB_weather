@@ -32,8 +32,12 @@ async function handleWeatherRequest(request, weatherApiAddress) {
     }
 
     const response = await fetch(request);
+
     const data = await response.clone().json();
-    await saveToIndexedDB(db, data, key, dateKey);
+    if (!data.message) {
+        await saveToIndexedDB(db, data, key, dateKey);
+    }
+
     return response;
 }
 

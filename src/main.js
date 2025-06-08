@@ -10,6 +10,8 @@ import initServiceWorker from './utils/service_worker';
 
 // components
 import './components';
+import { formatDate } from './utils/commonUtil';
+
 
 (async () => {
 
@@ -17,7 +19,10 @@ import './components';
     initServiceWorker();
 
     // coords
-    const { coords: { latitude, longitude } } = await initGeolocation(); // fail -> ottawa
+    const defaultLocalCoords = {
+        latitude: 45.424721, longitude:  -75.695000
+    }
+    const { latitude, longitude } = await initGeolocation(defaultLocalCoords); // fail -> ottawa
     const seoul = { latitude: roundCoords(37.532600), longitude: roundCoords(127.024612) };
     const local = { latitude: roundCoords(latitude), longitude: roundCoords(longitude) };
 
@@ -26,12 +31,31 @@ import './components';
     const addressAPI = initAddressAxios(latitude, longitude);
 
     // bind data to Dom
-    await bindSummaryToDom('#local-location', ...Object.values(local));
-    await bindSummaryToDom('#seoul-location', ...Object.values(seoul));
+    await Promise.all([
+        bindSummaryToDom('#local-location', ...Object.values(local)),
+        bindSummaryToDom('#seoul-location', ...Object.values(seoul)),
+        bindHourlyToDom('#local-hourly', ...Object.values(local)),
+        bindHourlyToDom('#seoul-hourly', ...Object.values(seoul)),
+    ]);
 
+    async function bindHourlyToDom(domId, lat, long) {
+        const hourly$ = window.document.querySelector(domId);
+        const hourlyList = await weatherAPI.hourlyWeather(lat, long);
+        hourly$.hourly = Array.isArray(hourlyList) ? hourlyList.reduce((ob, summary) => {
+            // date format
+            const dt = summary.temperature.dt;
+            const formattedDt = formatDate(dt);
+            if (ob?.[formattedDt]) {
+                ob[formattedDt].push(summary);
+            } else {
+                ob[formattedDt] = [summary];
+            }
+            return ob;
+        }, {}) : {};
+    }
 
-    async function bindSummaryToDom(id, lat, long) {
-        const summary$ = window.document.querySelector(id);
+    async function bindSummaryToDom(domId, lat, long) {
+        const summary$ = window.document.querySelector(domId);
         [summary$.place, summary$.weather] = await Promise.all([addressAPI.locationInfo(lat, long), weatherAPI.summaryWeather(lat, long)]);
     }
 })();

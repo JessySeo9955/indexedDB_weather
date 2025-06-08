@@ -45,7 +45,7 @@ function initWeatherAxios(lat, lon) {
     });
 
     api.interceptors.response.use(config => {
-        return JSON.parse(config.data.data);
+        return JSON.parse(config?.data?.data || "{}");
     }, (err) => {
         return Promise.reject(err);
     });

@@ -1,10 +1,10 @@
 
-const initGeolocation = () => new Promise((resolve, reject) => {
+const initGeolocation = (defaultCoord) => new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition((position) => {
-        resolve(position);
-    }, () => {
+        resolve(position.coords);
+    }, (err) => {
         // ottawa
-        resolve({ latitude: 45.424721, longitude:  -75.695000  });
+        resolve(defaultCoord);
     });
 
 })
