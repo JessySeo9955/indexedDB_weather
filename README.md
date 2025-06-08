@@ -13,12 +13,14 @@ A simple web app to compare **local weather** with **Seoul** weather data in rea
 - **Web Components** – for building reusable, modular UI components
 - **IndexedDB** – for local data caching 
 - **Service Worker** – for background sync
+- [repository](https://github.com/JessySeo9955/indexedDB_weather)
 
 ### ☁️ Backend (Serverless)
 
 - **Java** – for Lambda function logic
 - **AWS API Gateway** – for secure and scalable API endpoints 
 - **AWS Lambda** – for serverless backend logic
+- [repository](https://github.com/JessySeo9955/indexedDB_weather_backend)
 
 ### ⚙️ CI/CD & Hosting
 
