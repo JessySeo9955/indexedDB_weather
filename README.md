@@ -5,6 +5,8 @@ A simple web app to compare **local weather** with **Seoul** weather data in rea
 ## 📡 Data Source
 
 - [OpenWeather](https://openweathermap.org/)
+  - [Current weather API](https://openweathermap.org/current)
+  - [Hourly Forecast 4 days](https://openweathermap.org/api/hourly-forecast)
 
 ## 🧰 Tech Stack
 
@@ -25,9 +27,9 @@ A simple web app to compare **local weather** with **Seoul** weather data in rea
 ### ⚙️ CI/CD & Hosting
 
 - **GitHub Actions** – for automated build and deployment workflows
-- **Firebase Hosting** – for fast, reliable, and global static site hosting
+- **Firebase Hosting** – for static site hosting
 
 ---
 
-## 📸 Screenshots (Optional)
-<img align="right" max-width="100%" src="https://raw.githubusercontent.com/JessySeo9955/indexedDB_weather/main/.github/images/screenshot_weather.png" />
+## 📸 Screenshots
+<img max-width="100%" src="https://raw.githubusercontent.com/JessySeo9955/indexedDB_weather/main/.github/images/screenshot_weather.png" />

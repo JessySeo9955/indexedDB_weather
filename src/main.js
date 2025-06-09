@@ -10,7 +10,7 @@ import initServiceWorker from './utils/service_worker';
 
 // components
 import './components';
-import { formatDate } from './utils/commonUtil';
+import { formatDate, roundCoords } from './utils/commonUtil';
 
 
 (async () => {
@@ -60,8 +60,5 @@ import { formatDate } from './utils/commonUtil';
     }
 })();
 
-function roundCoords(number, decimals = 3) {
-    const factor = Math.pow(10, decimals);
-    return Math.round(number * factor) / factor;
-}
+
 

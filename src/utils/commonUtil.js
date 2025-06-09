@@ -21,4 +21,9 @@ function formatDate(timeStamp) {
         String(date.getDate()).padStart(2, '0');
 }
 
-export {isEmptyObject, isArray, kelvinToCelsius, formatDate};
+function roundCoords(number, decimals = 3) {
+    const factor = Math.pow(10, decimals);
+    return Math.round(number * factor) / factor;
+}
+
+export {isEmptyObject, isArray, kelvinToCelsius, formatDate, roundCoords};
