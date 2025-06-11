@@ -1,5 +1,4 @@
 // __tests__/main.test.js
-import { roundCoords } from '../src/utils/commonUtil';
 import initGeolocation from '../src/utils/geolocation';
 import { initAddressAxios, initWeatherAxios } from '../src/utils/api';
 import { vi, beforeEach, it, describe, beforeAll, expect } from 'vitest';
@@ -10,10 +9,10 @@ vi.mock('../src/utils/api');
 // Mock DOM structure before running test
 beforeEach(() => {
     document.body.innerHTML = `
-    <country-summary id="local-location"></country-summary>
-    <country-summary id="seoul-location"></country-summary>
-    <hourly-weather id="local-hourly"></hourly-weather>
-    <hourly-weather id="seoul-hourly"></hourly-weather>
+        <country-summary id="local-location"></country-summary>
+        <country-summary id="seoul-location"></country-summary>
+        <hourly-weather id="local-hourly"></hourly-weather>
+        <hourly-weather id="seoul-hourly"></hourly-weather>
   `;
 });
 
