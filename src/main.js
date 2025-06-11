@@ -23,8 +23,8 @@ import { formatDate, roundCoords } from './utils/commonUtil';
         latitude: 45.424721, longitude:  -75.695000
     }
     const { latitude, longitude } = await initGeolocation(defaultLocalCoords); // fail -> ottawa
-    const seoul = { latitude: roundCoords(37.532600), longitude: roundCoords(127.024612) };
-    const local = { latitude: roundCoords(latitude), longitude: roundCoords(longitude) };
+    const seoul = { latitude: roundCoords(37.532600, 1), longitude: roundCoords(127.024612,1) };
+    const local = { latitude: roundCoords(latitude, 1), longitude: roundCoords(longitude,1) };
 
     // init AXIOS
     const weatherAPI = initWeatherAxios(local.latitude, local.longitude);
@@ -40,23 +40,34 @@ import { formatDate, roundCoords } from './utils/commonUtil';
 
     async function bindHourlyToDom(domId, lat, long) {
         const hourly$ = window.document.querySelector(domId);
-        const hourlyList = await weatherAPI.hourlyWeather(lat, long);
-        hourly$.hourly = Array.isArray(hourlyList) ? hourlyList.reduce((ob, summary) => {
-            // date format
-            const dt = summary.temperature.dt;
-            const formattedDt = formatDate(dt);
-            if (ob?.[formattedDt]) {
-                ob[formattedDt].push(summary);
-            } else {
-                ob[formattedDt] = [summary];
-            }
-            return ob;
-        }, {}) : {};
+        try {
+            const hourlyList = await weatherAPI.hourlyWeather(lat, long);
+            hourly$.hourly = Array.isArray(hourlyList) ? hourlyList.reduce((ob, summary) => {
+                // date format
+                const dt = summary.temperature.dt;
+                const formattedDt = formatDate(dt);
+                if (ob?.[formattedDt]) {
+                    ob[formattedDt].push(summary);
+                } else {
+                    ob[formattedDt] = [summary];
+                }
+                return ob;
+            }, {}) : {};
+        } catch (e) {
+            console.log("bindHourlyToDom - err", e);
+            hourly$.reset = "Reload Again";
+        }
     }
 
     async function bindSummaryToDom(domId, lat, long) {
         const summary$ = window.document.querySelector(domId);
-        [summary$.place, summary$.weather] = await Promise.all([addressAPI.locationInfo(lat, long), weatherAPI.summaryWeather(lat, long)]);
+        try {
+            [summary$.place, summary$.weather] = await Promise.all([addressAPI.locationInfo(lat, long), weatherAPI.summaryWeather(lat, long)]);
+        } catch (e) {
+            console.log("bindSummaryToDom - err", e);
+            summary$.reset = "Reload Again";
+        }
+
     }
 })();
 

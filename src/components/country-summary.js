@@ -15,6 +15,11 @@ class CountrySummary extends HTMLElement {
         }
     }
 
+    set reset(message) {
+        this.renderSkeleton(message|| "");
+    }
+
+
     constructor() {
         super();
         this.renderSkeleton();
@@ -41,11 +46,11 @@ class CountrySummary extends HTMLElement {
         `;
     }
 
-    renderSkeleton() {
+    renderSkeleton(message = "") {
         this.innerHTML = `
              <div class="row ">
                  <div class="col child skeleton">
-                     <div>&nbsp;</div>
+                     <div>&nbsp;${message}</div>
                      <div><span class="text-sub">&nbsp;</span></div>
                  </div>
                  <div class="col child skeleton">

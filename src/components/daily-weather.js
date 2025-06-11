@@ -14,6 +14,10 @@ class DailyWeather extends HTMLElement {
         }
     }
 
+    set reset(message) {
+        this.renderSkeleton(message|| "");
+    }
+
     render() {
         const keys = Object.keys(this._hours);
         const maxLength = Math.max(...Object.values(this._hours).map(list => list.length));
@@ -49,10 +53,10 @@ class DailyWeather extends HTMLElement {
         `;
     }
 
-    renderSkeleton() {
+    renderSkeleton(message = "") {
         this.innerHTML = `
             <table class="skeleton" style="height: 500px">
-                <tr></tr>
+                <tr> ${message}</tr>
             </table>
         `;
     }
