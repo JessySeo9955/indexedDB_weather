@@ -54,8 +54,7 @@ import { formatDate, roundCoords } from './utils/commonUtil';
                 return ob;
             }, {}) : {};
         } catch (e) {
-            console.log("bindHourlyToDom - err", e);
-            hourly$.reset = "Reload Again";
+            hourly$.reset = `Reload Again ${e.message}`;
         }
     }
 
@@ -64,8 +63,7 @@ import { formatDate, roundCoords } from './utils/commonUtil';
         try {
             [summary$.place, summary$.weather] = await Promise.all([addressAPI.locationInfo(lat, long), weatherAPI.summaryWeather(lat, long)]);
         } catch (e) {
-            console.log("bindSummaryToDom - err", e);
-            summary$.reset = "Reload Again";
+            summary$.reset = `Reload Again ${e.message}`;
         }
 
     }

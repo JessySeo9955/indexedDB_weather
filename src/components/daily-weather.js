@@ -56,7 +56,7 @@ class DailyWeather extends HTMLElement {
     renderSkeleton(message = "") {
         this.innerHTML = `
             <table class="skeleton" style="height: 500px">
-                <tr> ${message}</tr>
+                <tr>${message}</tr>
             </table>
         `;
     }
